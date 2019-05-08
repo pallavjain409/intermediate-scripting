@@ -23,4 +23,4 @@ function sumPrimes(num) {
   return sum;
 }
 
-sumPrimes(10);
+module.exports = sumPrimes;

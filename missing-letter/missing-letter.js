@@ -14,4 +14,4 @@ function fearNotLetter(str) {
   while (index);
 }
 
-fearNotLetter("abcdefghjklmno");
+module.exports = fearNotLetter;

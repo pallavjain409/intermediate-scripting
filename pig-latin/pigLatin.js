@@ -30,4 +30,4 @@ function translatePigLatin(str) {
 
 }
 
-translatePigLatin("glove");
+module.exports = translatePigLatin;

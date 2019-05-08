@@ -7,4 +7,4 @@ function myReplace(str, before, after) {
   return str;
 }
 
-myReplace("He is Sleeping on the couch", "Sleeping", "sitting")
+module.exports = myReplace;
