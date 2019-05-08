@@ -1,0 +1,22 @@
+{
+  "name": "intermediate-scripting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "binary-to-english.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pallavjain409/intermidiate-scripting.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pallavjain409/intermidiate-scripting/issues"
+  },
+  "homepage": "https://github.com/pallavjain409/intermidiate-scripting#readme",
+  "dependencies": {
+    "jest": "^24.8.0"
+  }
+}

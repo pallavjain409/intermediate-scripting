@@ -1,0 +1,17 @@
+function fearNotLetter(str) {
+  let index = str.length - 1;
+  let missingLetter = "";
+  do {
+    if (str.charCodeAt(index) - str.charCodeAt(index - 1) == 1) {} else {
+      missingLetter += String.fromCharCode(str.charCodeAt(index) - 1);
+      str = str.split("");
+      let str1 = str.splice(index);
+      str = str.join('') + missingLetter + str1.join('');
+      return missingLetter;
+    }
+    index--;
+  }
+  while (index);
+}
+
+fearNotLetter("abcdefghjklmno");
