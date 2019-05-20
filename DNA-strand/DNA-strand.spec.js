@@ -1,4 +1,4 @@
-var pairElement = require("./DNA-strand.js");
+const pairElement = require("./DNA-strand.js");
 test("DNA pairing 1", function() {
   const actualAnswer = pairElement("ATCGA");
   expect(actualAnswer).toStrictEqual([

@@ -1,27 +1,27 @@
-function replaceWithHTMLEntities(str, word, HTMLEntity) {
-  return str.replace(word, HTMLEntity);
+function replaceWithHtmlEntities(str, char, HtmlEntity) {
+  return str.replace(char, HtmlEntity);
 }
 
-function convertHTML(str) {
-  for (let word of str) {
-    switch (word) {
+function convertHtml(str) {
+  for (let char of str) {
+    switch (char) {
       case "&":
-        str = replaceWithHTMLEntities(str, word, "&amp;");
+        str = replaceWithHtmlEntities(str, char, "&amp;");
         break;
       case "<":
-        str = replaceWithHTMLEntities(str, word, "&lt;");
+        str = replaceWithHtmlEntities(str, char, "&lt;");
         break;
       case ">":
-        str = replaceWithHTMLEntities(str, word, "&gt;");
+        str = replaceWithHtmlEntities(str, char, "&gt;");
         break;
       case '"':
-        str = replaceWithHTMLEntities(str, word, "&quot;");
+        str = replaceWithHtmlEntities(str, char, "&quot;");
         break;
       case "'":
-        str = replaceWithHTMLEntities(str, word, "&apos;");
+        str = replaceWithHtmlEntities(str, char, "&apos;");
         break;
       case "<>":
-        str = replaceWithHTMLEntities(str, word, "&lt;&gt;");
+        str = replaceWithHtmlEntities(str, char, "&lt;&gt;");
         break;
     }
 
@@ -30,4 +30,4 @@ function convertHTML(str) {
 }
 
 
-module.exports = convertHTML;
+module.exports = convertHtml;
