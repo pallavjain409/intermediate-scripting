@@ -20,7 +20,7 @@ function checkCashRegister(price, cash, cid) {
     change.change = cid
   } else {
     let changeArrayForOpenStatus = getChangeForOpenStatus(cid, changeToReturn);
-    if (changeArrayForOpenStatus != "INSUFFICIENTS FUNDS") {
+    if (changeArrayForOpenStatus.length > 0) {
       change.change = changeArrayForOpenStatus;
     } else {
       change.status = cashStatus.insufficientFunds;
@@ -30,6 +30,7 @@ function checkCashRegister(price, cash, cid) {
 }
 
 function getChangeForOpenStatus(cid, changeToReturn) {
+  let currencyArray = [];
   const currencyRate = [{
       name: 'ONE HUNDRED',
       val: 100.00
@@ -67,28 +68,33 @@ function getChangeForOpenStatus(cid, changeToReturn) {
       val: 0.01
     }
   ];
-
+  cid = sortCashInDrawer(cid, currencyRate);
+  console.log(cid);
   let change = [];
   let value = 0;
-  let count = cid.length - 1;
-  currencyRate.forEach(currency => {
-    while (currency.val <= changeToReturn && cid[count][1] != 0) {
-      changeToReturn -= currency.val;
-      changeToReturn = Number(changeToReturn.toFixed(2));
-      cid[count][1] -= currency.val;
-      value += currency.val;
+  let count = 0;
+  while (count < cid.length) {
+    if (currencyRate[count].val <= changeToReturn && cid[count][1] != 0) {
+      if (changeToReturn >= cid[count][1]) {
+        changeToReturn -= cid[count][1];
+        value = cid[count][1];
+      } else {
+        value = Math.trunc(changeToReturn / currencyRate[count].val) * currencyRate[count].val;
+        changeToReturn = (changeToReturn % currencyRate[count].val).toFixed(2);
+      }
     }
     if (value > 0) {
-      let currencyNameAndReturned = [currency.name, value]
-      change.push(currencyNameAndReturned);
+      currencyArray.push([currencyRate[count].name, value]);
+      console.log(currencyArray);
     }
-    count--;
+    count++;
     value = 0;
-  });
-  if (changeToReturn == 0) {
-    return change;
   }
-  return "INSUFFICIENTS FUNDS";
+  if (changeToReturn == 0) {
+    return currencyArray;
+  } else {
+    return [];
+  }
 
 }
 
@@ -105,16 +111,19 @@ function getStatus(changeToReturn, cashInDraw) {
     return cashStatus.open;
   }
 }
-module.exports = checkCashRegister;
 
-// checkCashRegister(19.5, 20, [
-//   ["PENNY", 0.01],
-//   ["NICKEL", 0],
-//   ["DIME", 0],
-//   ["QUARTER", 0],
-//   ["ONE", 1],
-//   ["FIVE", 0],
-//   ["TEN", 0],
-//   ["TWENTY", 0],
-//   ["ONE HUNDRED", 0]
-// ]);
+function sortCashInDrawer(cid, currencyRate) {
+  var sortedArray = [];
+  let count = 0;
+  while (count < currencyRate.length) {
+    cid.forEach(arr => {
+      if (arr[0] == currencyRate[count].name) {
+        sortedArray.push(arr);
+      }
+    })
+    count++;
+  }
+  return sortedArray;
+}
+
+module.exports = checkCashRegister;
