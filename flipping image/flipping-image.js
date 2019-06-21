@@ -1,5 +1,5 @@
 var flipAndInvertImage = function(A) {
- return  A.map(arr => flipRow(arr)).map(arr => arr.map(input => invert(input)));
+ return  A.map(arr => flipRow(arr).map(input => invert(input)));
 };
 function flipRow(arr){
     let A = [];
