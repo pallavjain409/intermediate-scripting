@@ -1,16 +1,15 @@
 function binarySearch(array, target) {
-  let max = array.length - 1;
-  let min = 0;
-  while (max > min) {
-    let guess = Math.floor((max + min) / 2)
+  let end = array.length - 1;
+  let start = 0;
+  while (start <= end) {
+    let guess = Math.floor((start + end) / 2)
     if (array[guess] == target) {
       return guess
     }
     if (array[guess] < target) {
-      min++;
-    }
-    else {
-      max--;
+      start = guess + 1;
+    } else {
+      end = guess - 1;
     }
   }
   return -1;
