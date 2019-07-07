@@ -1,12 +1,13 @@
 var twoSum = function (numbers, target) {
-    let result = [];
+    if (numbers.length <= 1){
+        return "Insufficient Array length";
+    }
     let cache = {}
     for (let index = 0; index < numbers.length; index++) {
         let newTarget = target - numbers[index];
         if (cache.hasOwnProperty(newTarget)) {
-            result.push(cache[newTarget] + 1);
-            result.push(index + 1);
-            return result;
+           
+            return [cache[newTarget] + 1, index + 1];
         }
         else {
             cache[numbers[index]] = index;
