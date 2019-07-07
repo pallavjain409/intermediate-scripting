@@ -1,6 +1,6 @@
 var twoSum = function (numbers, target) {
     if (numbers.length <= 1){
-        return "Insufficient Array length";
+        return [];
     }
     let cache = {}
     for (let index = 0; index < numbers.length; index++) {
