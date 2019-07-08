@@ -1,5 +1,4 @@
 function myReplace(str, before, after) {
-  console.log(before[0])
   if (before[0] >= 'A' && before[0] <= 'Z') {
     after = after[0].toUpperCase() + after.slice(1);
   }
