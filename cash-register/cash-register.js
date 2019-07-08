@@ -69,7 +69,6 @@ function getChangeForOpenStatus(cid, changeToReturn) {
     }
   ];
   cid = sortCashInDrawer(cid, currencyRate);
-  console.log(cid);
   let change = [];
   let value = 0;
   let count = 0;
@@ -85,7 +84,6 @@ function getChangeForOpenStatus(cid, changeToReturn) {
     }
     if (value > 0) {
       currencyArray.push([currencyRate[count].name, value]);
-      console.log(currencyArray);
     }
     count++;
     value = 0;
