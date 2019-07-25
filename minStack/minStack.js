@@ -13,17 +13,17 @@
 // minStack.pop();
 // minStack.top();      --> Returns 0.
 // minStack.getMin();   --> Returns -2.
-const Stack  = require("./Stack.js");
+const Stack = require("./Stack.js");
 
- class MinStack {
+class MinStack {
     constructor() {
-        this._storage =  new Stack();
+        this._storage = new Stack();
         this._minStack = new Stack();
     }
 
     push(x) {
         this._storage.push(x);
-        if (this._minStack._count == 0|| x <= this._minStack.peek()) {
+        if (this._minStack._count == 0 || x <= this._minStack.peek()) {
             this._minStack.push(x);
         }
     }
@@ -42,35 +42,34 @@ const Stack  = require("./Stack.js");
     getMin() {
         return this._minStack.peek();
     }
- }
+}
 
 
 
 // TESTS
-function test(label, body){
-    if (body){
+function test(label, body) {
+    if (body) {
         return `Test Passes for ${label}`
     }
-    else{
+    else {
         return `Test failse for ${label}`;
     }
 }
 
 
 
- let  minStack = new MinStack();
- minStack.push(-2);
- minStack.push(0);
- minStack.push(-3);
-console.log(test("getMin() should return -3", function(){
-     return minStack.getMin() == -3
- }));
+let minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+console.log(test("getMin() should return -3", function () {
+    return minStack.getMin() == -3
+}));
 minStack.pop();
- console.log(test("top(); should return 0", function(){
+console.log(test("top(); should return 0", function () {
     minStack.top() == 0;
 }));
- console.log(test("getMin() should return -2", function(){
-     return minStack.getMin == -2;
- }));
+console.log(test("getMin() should return -2", function () {
+    return minStack.getMin == -2;
+}));
 
- 
