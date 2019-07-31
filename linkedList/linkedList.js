@@ -49,13 +49,8 @@ class LinkedList {
             return this.addAtHead(value);
         } else {
             let node = new ListNode(value);
-            let currentNode = this.head;
-            let previousNode = null;
-            while (index) {
-                previousNode = currentNode;
-                currentNode = currentNode.next;
-                index--;
-            }
+            let currentNode , previousNode ;
+           [previousNode, currentNode] = this.getPrevAndCurrNodesAtIndex(index);
             previousNode.next = node;
             node.next = currentNode;
             return this.length++;
@@ -63,7 +58,7 @@ class LinkedList {
     }
     // get methods
     get(index) {
-        if (index < 0 || index > this.length -1) {
+        if (index < 0 || index > this.length - 1) {
             return -1;
         }
         let currentNode = this.head;
@@ -74,7 +69,7 @@ class LinkedList {
         return currentNode.value;
     }
 
-    
+
 
     //Checking value methods
 
@@ -157,55 +152,39 @@ class LinkedList {
     }
     deleteAtIndex(index) {
         if (index < 0 || index > this.length - 1) {
-            return ;
+            return;
         }
-        let currentNode = this.head;
-        let previousNode = null;
-        while(index){
-            previousNode = currentNode;
-            currentNode = currentNode.next;
-            index--;
-        }
-        if(this.isHead(currentNode)){
+        let previousNode, currentNode
+      [previousNode, currentNode] = this.getPrevAndCurrNodesAtIndex(index);
+        if (this.isHead(currentNode)) {
             return this.removeHead();
-        }
-        else if(this.isTail(currentNode)){
+        } else if (this.isTail(currentNode)) {
             return this.removeTail();
-        }
-        else{
+        } else {
             previousNode.next = currentNode.next;
             currentNode = null;
             this.length--;
             return;
 
         }
-        
-
     }
-
-
-
+    getPrevAndCurrNodesAtIndex(index){
+        let currentNode = this.head;
+        let previousNode = null;
+        while (index) {
+            previousNode = currentNode;
+            currentNode = currentNode.next;
+            index--;
+        }
+        return [previousNode, currentNode];
+    }
 }
-// let linkedlist = new LinkedList(1);
-// // linkedlist.insert(2);
-// // linkedlist.insert(3);
-// // linkedlist.insert(5);
-// // linkedlist.removeValue(2)
-// // console.log(linkedlist.head)
-// // console.log(linkedlist.contains(3))
-// // linkedlist.removeTail();
-// // linkedlist.removeTail();
-// // console.log(linkedlist.tail)
-// // console.log(linkedlist.length);
-// linkedlist.removeTail();
-// linkedlist.insert(2);
-// console.log(linkedlist);
-let myll = new LinkedList();
 
+let ll = new LinkedList();
+ll.addAtTail(1);
+ll.addAtTail(2);
+ll.addAtTail(3);
+ll.deleteAtIndex(1);
+ll.addAtIndex(1,2);
+console.log(ll.head);
 
-myll.addAtHead(1);
-myll.addAtIndex(1, 2);
-// console.log(myll.get(1));
-// console.log(myll.get(0));
-console.log(myll.get(2));
-// console.log(myll.head);
