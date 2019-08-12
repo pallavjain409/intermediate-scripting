@@ -1,17 +1,17 @@
 let Stack = require("../Stack.js")
 var isValid = function(s) {
-      var map = {
+      var brackets = {
         '{':'}',
         '(':')',
         '[':']'
     }
 let stack = new Stack();
     for (let i = 0 ; i < s.length; i++){
-        if (s[i] == '[' || s[i] == '(' || s[i] == '{'){
+        if (Object.keys(brackets).includes(s[i])){
             stack.push(s[i]);
         }
-        else if (s[i] == ')' || s[i] == ']' || s[i] == '}'){
-            if (s[i] == map[stack.peek()]){
+        else if (Object.values(brackets).includes(s[i])){
+            if (s[i] == brackets[stack.peek]){
                 stack.pop();
             }
             else {

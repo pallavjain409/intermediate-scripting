@@ -18,7 +18,7 @@ class Stack {
         }
     }
 
-    peek() {
+    get peek() {
         if (this._count > 0) {
             return this._storage[this._count - 1];
         }
