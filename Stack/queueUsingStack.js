@@ -15,37 +15,30 @@ MyQueue.prototype.push = function (x) {
 
 
 MyQueue.prototype.pop = function () {
-    let count = this.length;
-    while (count) {
+    for (let count = 0; count < this.length; count++) {
         let value = this.stack.pop();
         this.outputStack.push(value);
-        count--;
     }
     let poppedValue = this.outputStack.pop();
     this.length = this.length - 1;
-    count = this.length;
-    while (count) {
+    for (let count = 0; count < this.length; count++) {
         let value = this.outputStack.pop();
         this.stack.push(value);
-        count--;
     }
     return poppedValue;
 };
 
 
 MyQueue.prototype.peek = function () {
-    let count = this.length;
-    while (count) {
+    for (let count = 0; count < this.length; count++) {
         let value = this.stack.pop();
         this.outputStack.push(value);
-        count--;
     }
     let peekValue = this.outputStack.peek;
     count = this.length;
-    while (count) {
+    for (let count = 0; count < this.length; count++) {
         let value = this.outputStack.pop();
         this.stack.push(value);
-        count--;
     }
     return peekValue;
 };
