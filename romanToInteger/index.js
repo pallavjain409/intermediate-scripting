@@ -1,6 +1,6 @@
 var romanToInt = function (s) {
-    if(!s){
-        return ;
+    if (!s) {
+        return;
     }
     const roman = {
         I: 1,
@@ -12,22 +12,22 @@ var romanToInt = function (s) {
         M: 1000
     };
     let count = s.length - 1;
-    let int = 0;
-    let prev = roman[s[count]]; 
+    let integer = 0;
+    let prev = roman[s[count]];
 
     while (count >= 0) {
-        if(!prev){
+        if (!prev) {
             return "Invalid roman number";
         }
         let curr = roman[s[count]];
         if (curr >= prev) {
-            int += curr;
+            integer += curr;
         } else {
-            int = int - curr;
+            integer = integer - curr;
         }
         prev = curr;
         count--;
     }
-    return int;
+    return integer;
 };
-console.log(romanToInt("II"))
+console.log(romanToInt("II"));
