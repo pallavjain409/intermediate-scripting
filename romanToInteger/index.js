@@ -1,4 +1,7 @@
 var romanToInt = function (s) {
+    if(!s){
+        return undefined;
+    }
     const roman = {
         I: 1,
         V: 5,
@@ -24,4 +27,4 @@ var romanToInt = function (s) {
     }
     return int;
 };
-console.log(romanToInt("LVIII"))
+console.log(romanToInt(""))
