@@ -30,6 +30,20 @@ addEnd(key, data) {
         this.length++;
         return this.length;
     }
+    getDataOfKey(key) {
+        let result = [];
+        if (this.isEmpty()) {
+            return result;
+        }
+        let curr = this.head;
+        while (curr) {
+            if (curr.key === key) {
+                result.push(curr.data)
+            }
+            curr = curr.next;
+        }
+        return result;
+    }
 
     deleteFirst() {
         if (this.isEmpty()) {

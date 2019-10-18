@@ -25,17 +25,7 @@ class HashTable {
     get(key) {
         let keyIndex = this.hash(key);
         let linkedList = this.array[keyIndex];
-        if (linkedList.head == null) {
-            return new Error("Key does not exist");
-        }
-        let result = [];
-        let node = linkedList.head;
-        while (node) {
-            if (node.key == key) {
-                result.push(node.key + " -> " + node.data);
-            }
-            node = node.next;
-        }
+        let result = linkedList.getDataOfKey(key);
         return result
     }
 
@@ -54,3 +44,6 @@ class HashTable {
     }
 }
 
+let h = new HashTable()
+h.set("Instructor", "Gopi");
+console.log(h.get("Instructor"))
