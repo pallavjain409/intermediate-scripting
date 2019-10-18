@@ -178,7 +178,13 @@ class BinaryTree {
 
         return result;
     }
-
+    maxDepth() {
+        
+        if (this.root == null || this.root== undefined) {
+            return 0
+        }
+        return Math.max(maxDepth(this.root.left), maxDepth(this.root.right)) + 1
+    }
 
 }
 let bt = new BinaryTree();
@@ -191,9 +197,12 @@ bt.add(28);
 bt.add(39);
 // console.log(bt.findMin());
 // console.log(bt.findMax());
-console.log(bt.isPresent(-333))
-console.log(bt.find(9));
-console.log(bt.dfsInorder());
-console.log(bt.dfsPreOrder());
-console.log(bt.dfsPostOrder());
-console.log(bt.bfs());
+// console.log(bt.isPresent(-333))
+// console.log(bt.find(9));
+// console.log(bt.dfsInorder());
+// console.log(bt.dfsPreOrder());
+// console.log(bt.dfsPostOrder());
+// console.log(bt.bfs());
+console.log(bt.maxDepth());
+
+// console.log(bt.maxDepth());
