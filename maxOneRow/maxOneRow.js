@@ -3,7 +3,6 @@ var binarySearchOfOne = (arr) => {
     let end = arr.length - 1
     while (start <= end) {
         let middle = Math.floor((start + end) / 2);
-        console.l
         if (arr[middle] == 1 && arr[middle - 1] == 0) {
             return middle;
         } else if (arr[middle] == 0) {
@@ -25,16 +24,17 @@ var countNoOfOneInSortedArr = arr => {
         return 0;
     }
     let startingIndexOfOne = binarySearchOfOne(arr);
-    let countOfZero = arrLength - startingIndexOfOne;
-    return countOfZero;
+    let countOfOne = arrLength - startingIndexOfOne;
+    return countOfOne;
 }
+
 
 var getRowWithMaxOne = (arr) => {
     var noOfOneInEachRow = {};
     arr.forEach((row, index) => {
-         let zeroCount = countNoOfOneInSortedArr(row);
-         if (zeroCount > 0){
-             noOfOneInEachRow[index] = zeroCount;
+         let oneCount = countNoOfOneInSortedArr(row);
+         if (oneCount > 0){
+             noOfOneInEachRow[index] = oneCount;
          }
     })
     if (Object.keys(noOfOneInEachRow).length == 0){
@@ -50,7 +50,3 @@ var getRowWithMaxOne = (arr) => {
 }
 
 module.exports = getRowWithMaxOne;
-// console.log(getRowWithMaxOne([
-//     [0,0,0,0],
-//     [1]
-// ]))
