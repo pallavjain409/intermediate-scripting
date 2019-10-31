@@ -30,18 +30,15 @@ var countNoOfOneInSortedArr = arr => {
 
 
 var getRowWithMaxOne = (arr) => {
-    let oneCountInFirstRow = countNoOfOneInSortedArr(arr[0])
-    let maxOneRow = {
-        "row": 0,
-        "count": oneCountInFirstRow
-    };
+    let maxOneRow = 0;
+    let maxOneCount = 0;
     arr.forEach((row, index) => {
         let currentRowOneCount = countNoOfOneInSortedArr(row);
-        if (maxOneRow.count < currentRowOneCount) {
-            maxOneRow.row = index
-            maxOneRow.count = currentRowOneCount
+        if (maxOneCount < currentRowOneCount) {
+            maxOneRow = index
+           maxOneCount = currentRowOneCount
         }
     })
-    return maxOneRow.row
+    return maxOneRow
 }
 module.exports = getRowWithMaxOne;
