@@ -18,7 +18,6 @@ var isPalindrome = function (head) {
         slow = slow.next;
     }
     return true
-
 };
 
 function reverse(head) {
@@ -28,7 +27,6 @@ function reverse(head) {
         head = head.next;
         curr.next = prev;
         prev = curr;
-
     }
     return prev;
 }
