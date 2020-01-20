@@ -1,34 +1,37 @@
-var threeSum = function(arr){
-    let result = [];
-    arr = arr.sort((a, b) => a-b)
-    for (let i = 0; i < arr.length - 3; i++){
-        if(i == 0 || arr[i] > arr[i - 1]){ // [-4, -1, -1, 0 ,1, 2]
-            let start = i + 1; // 1
-            let end = arr.length - 1; // 5
-            while(start < end){ // 3 // 5
-                if (arr[i] + arr[start] + arr[end] === 0){
-                   // -4 -1 -1 = -6
-                    result.push([arr[i], arr[start], arr[end]])
-                    start++ ;
-                    end--
-                }
-                else if (arr[i] + arr[start] + arr[end] < 0){
-                  
-                   let current = arr[start]
-                   while(current === arr[start] && start < end){
-                       start++
-                   }
-                }
-                 if (arr[i] + arr[start] + arr[end] > 0){
-                    let current = arr[end]
-                    while(current === arr[end] && start < end){
-                        end--
-                    }
-                 }
-            }
-        }
-    }
-    return result
-}
+var threeSum = function(nums) {
+  nums = nums.sort((a, b) => a - b);
+  let result = [];
 
-console.log(threeSum([0,0,0,]))
+  for (let [index, number] of nums.entries()) {
+    if (number > 0) {
+      return result;
+    }
+    if (number === nums[index - 1]) {
+      continue;
+    }
+
+    let start = index + 1;
+    let end = nums.length - 1;
+    while (start < end) {
+      let sum = number + nums[start] + nums[end];
+      if (sum === 0) {
+        result.push([number, nums[start], nums[end]]);
+        start++;
+        end--;
+        while (nums[start] === nums[start - 1] && start < end) {
+          start++;
+        }
+        while (nums[end] === nums[end + 1] && start < end) {
+          end--;
+        }
+      } else if (sum < 0) {
+        start++;
+      } else {
+        end--;
+      }
+    }
+  }
+  return result;
+};
+
+console.log(threeSum([1, 2, 0, -1, -1, -4]));
