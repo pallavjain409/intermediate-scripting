@@ -50,5 +50,5 @@ const sortByAbsoluteValue2 = function(arr) {
     return arr;
   };
   
-  let arr = [0, -2, 2, -4, -1, -2];
+  let arr = [0, -2, 2, -4, -1, -2]; // [ 0, -1, -2, -2, 2, -4 ]
   console.log(sortByAbsoluteValue2(arr));
